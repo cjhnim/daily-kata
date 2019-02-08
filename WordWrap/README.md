@@ -7,6 +7,7 @@
 * https://www.codewars.com/kata/word-wrap-1
 
 ### Day 1
+
 개발 환경을 세팅하고 프로젝트를 생성해 봅시다.
 
 Setting up the development environment and create the console application and unit test in visual studio 2017
