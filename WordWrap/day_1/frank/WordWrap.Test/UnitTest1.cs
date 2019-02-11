@@ -13,12 +13,21 @@ namespace WordWrap.Test
         }
 
         [TestMethod]
-        public void WorkWrap을_수행하는_함수를_실행할수_있다()
+        public void 한단어를_WordWrap_할_수_있다()
         {
             var wordWrap = new WordWrapper();
-            string output = wordWrap.wrap("test", 7);
+            string output = wordWrap.wrap("Hello", 7);
 
-            Assert.AreEqual("test", output);
+            Assert.AreEqual("Hello", output);
+        }
+
+        [TestMethod]
+        public void 한단어를_WordWrap_할_수_있다2()
+        {
+            var wordWrap = new WordWrapper();
+            string output = wordWrap.wrap("Hello ", 7);
+
+            Assert.AreEqual("Hello ", output);
         }
     }
 }
