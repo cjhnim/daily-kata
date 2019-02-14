@@ -106,6 +106,7 @@ namespace WordWrap.Test
 
             Assert.AreEqual(Expected, output);
         }
+
         //[DataRow("test", "test", 7)]
         //[DataRow("hello\nworld", "hello world", 7)]
         //[DataRow("a lot of\nwords for--a single--line", "a lot of words for a single line", 10)]
