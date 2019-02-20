@@ -20,16 +20,21 @@ namespace Wrapper.Test
         }
 
         [DataRow("word", "word", 5)]
+        [DataRow("word", "word", 4)]
+        [DataRow("wo--rd", "word", 2)]
         [DataTestMethod]
         public void 한단어(string Expected, string Actual, int ActualLen)
         {
             Assert.AreEqual(Expected, wrapper.Do(Actual, ActualLen));
         }
 
-        [DataRow("word--word", "word word", 5)]
+        [DataRow("wor--d w--ord", "word word", 3)]
+        //[DataRow("word--word", "word word", 4)]
+        //[DataRow("word--word", "word word", 5)]
+        //[DataRow("word--word", "word word", 6)]
         [DataRow("word--word--word", "word word word", 5)]
         [DataTestMethod]
-        public void 딱떨어짐(string Expected, string Actual, int ActualLen)
+        public void 두단어(string Expected, string Actual, int ActualLen)
         {
             Assert.AreEqual(Expected, wrapper.Do(Actual, ActualLen));
         }
