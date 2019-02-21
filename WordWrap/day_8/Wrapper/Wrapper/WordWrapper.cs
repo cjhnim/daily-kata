@@ -18,23 +18,40 @@ namespace Wrapper
 
         private static string BreakDown(string Text, int Limit)
         {
-            int wrapOffset;
+            int wrapOffset, nextOffset;
 
             if (Text.Length <= Limit)
                 return Text;
 
-            if (Text[Limit - 1] != ' ')
+            if (Text[Limit] != ' ')
             {
-                wrapOffset = Text.LastIndexOf(" ", Limit-1);
+                wrapOffset = Text.LastIndexOf(" ", Limit);
                 if (wrapOffset == -1)
+                    wrapOffset = 0;
+
+                nextOffset = Text.IndexOf(" ", Limit);
+                if (nextOffset == -1)
+                    nextOffset = Text.Length;
+
+                if (ExtractWord(Text, wrapOffset, nextOffset).Length > Limit)
+                {
                     wrapOffset = Limit;
-                else if (Text.Substring(wrapOffset, Text.IndexOf(" ", Limit-1)).Length > Limit)
-                    wrapOffset = Limit;
+                }
             }
             else
                 wrapOffset = Limit;
-            //return Text.Substring(0, wrapOffset).Trim() + "--" + Text.Substring(wrapOffset).Trim();
+
             return Text.Substring(0, wrapOffset).Trim() + "--" + BreakDown(Text.Substring(wrapOffset).Trim(), Limit);
+        }
+
+        private static string ExtractWord(string Text, int wrapOffset, int nextOffset)
+        {
+            return Text.Substring(wrapOffset, nextOffset - wrapOffset).Trim();
+        }
+
+        private static bool IfLastWord(int wrapOffset)
+        {
+            return wrapOffset == -1;
         }
     }
 }
