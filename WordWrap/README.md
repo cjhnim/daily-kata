@@ -5,6 +5,7 @@
 ## 첫번째 문제(First coding training question) - WorkWrap
 
 * https://www.codewars.com/kata/word-wrap-1
+* http://thecleancoder.blogspot.com/2010/10/craftsman-62-dark-path.html
 
 ### Day 1
 
