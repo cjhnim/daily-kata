@@ -4,27 +4,19 @@ namespace WordWrap
 {
     public class Wrapper
     {
-        public static string DoWrap(string Text, int Limit)
+        public static String DoWrap(String text, int limit)
         {
-            if (Limit <= 0)
-                return Text;
-
-            return BreakLine(Text, Limit);
+            if (text.Length <= limit)
+                return text;
+            int breakPoint = text.LastIndexOf(" ", limit);
+            if (breakPoint == -1 || firstWordLength(text.Substring(breakPoint + 1)) > limit)
+                breakPoint = limit;
+            return text.Substring(0, breakPoint) + "--" + DoWrap(text.Substring(breakPoint).Trim(), limit);
         }
 
-        private static string BreakLine(string Text, int Limit)
+        private static int firstWordLength(String text)
         {
-            if (Text.Length <= Limit)
-                return Text;
-
-            int wrapOffset = Limit; 
-            int space = Text.LastIndexOf(" ", Limit-1);
-            if(space != -1 && space != (Limit-1))
-            {
-                if (Text.Substring(space).Trim().Length <= Limit)
-                    wrapOffset = space;
-            }
-            return Text.Substring(0, wrapOffset).Trim() + "--" + BreakLine(Text.Substring(wrapOffset).Trim(), Limit);
+            return text.Contains(" ") ? text.IndexOf(" ") : text.Length;
         }
     }
 }
