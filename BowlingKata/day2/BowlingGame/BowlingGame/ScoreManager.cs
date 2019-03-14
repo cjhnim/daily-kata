@@ -1,47 +1,76 @@
 ﻿using System;
 
+
 namespace BowlingGame
 {
     public class ScoreManager
     {
+        private const int TEN_PINS = 10;
+        private const int MAX_FRAME = 10;
+        private const int MAX_ROLL = 21;
         private int count;
-        private int[] scores;
+        private int[] rolls;
 
         public ScoreManager()
         {
-            scores = new int[20];
+            rolls = new int[MAX_ROLL];
             count = 0;
         }
 
         public int score()
         {
-            int total = 0;
+            int score = 0;
+            int rollCount = 0;
 
-            for (int i = 0; i < 20; i+=2)
+            for (int frame = 1; frame <= MAX_FRAME; frame++)
             {
-                total += scores[i];
-                total += scores[i + 1];
-
-                if (i >1 && scores[i-2] == 10)
+                if (frame < MAX_FRAME && isStrike(rollCount))
                 {
-                    total += scores[i];
-                    total += scores[i+1];
+                    score += TEN_PINS;
+                    score += strikeBonus(rollCount);
+                    rollCount += 1;
                 }
-                else if (i > 1 && scores[i-2] + scores[i-1] == 10)
+                else if (frame < MAX_FRAME && isSpare(rollCount))
                 {
-                    total += scores[i];
+                    score += TEN_PINS;
+                    score += spareBonus(rollCount);
+                    rollCount += 2;
+                }
+                else
+                {
+                    score += rolls[rollCount];
+                    score += rolls[rollCount + 1];
+                    rollCount += 2;
                 }
             }
 
-            return total;
+            score += rolls[rollCount];
+            return score;
+        }
+
+        private int spareBonus(int i)
+        {
+            return rolls[i + 2];
+        }
+
+        private int strikeBonus(int i)
+        {
+            return rolls[i + 1] + rolls[i + 2];
+        }
+
+        private bool isSpare(int i)
+        {
+            return rolls[i] + rolls[i + 1] == TEN_PINS;
+        }
+
+        private bool isStrike(int i)
+        {
+            return rolls[i] == TEN_PINS;
         }
 
         public void roll(int pins)
         {
-            scores[count++] = pins;
-
-            if (pins == 10)
-                count++;
+            rolls[count++] = pins;
         }
     }
 }
