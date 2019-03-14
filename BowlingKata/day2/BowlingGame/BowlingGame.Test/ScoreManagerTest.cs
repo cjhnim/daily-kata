@@ -3,12 +3,13 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 // TODO:
 // [ ] 한 프레임은 기본적으로 2번 던진다.
-// [ ] 최대 10프레임이다.
-// [ ] strike이면 다음 프레임의 두 점수를 더한 값이 보너스이다.
-// [ ] spare이면 다음 프레임의 점수를 더한 값이 보너스이다.
-// [ ] open이면 보너스는 없다.
-// [ ] 마지막프레임은 스트라이크던, 스페어이든 보너스 점수가 없다.(다음 프레임이 없으므로)
 // [ ] strike 이면 한프레임은 한번 친다.
+// [ ] 최대 10프레임이다.
+// [ ] 한 프레임의 점수는 던진 점수의 합이다.
+// [ ] open이면 보너스는 없다.
+// [ ] spare이면 다음 프레임의 점수를 더한 값이 보너스이다.
+// [ ] strike이면 다음 프레임의 두 점수를 더한 값이 보너스이다.
+// [ ] 마지막 10프레임은 스트라이크던, 스페어이든 보너스 점수가 없다.(다음 프레임이 없으므로)
 
 
 namespace BowlingGame.Test
@@ -159,6 +160,14 @@ namespace BowlingGame.Test
             rollMany(count: 14, pins: 0);
 
             Assert.AreEqual(32, scoreManager.score());
+        }
+
+        [TestMethod]
+        public void 올스페어()
+        {
+            rollMany(count: 21, pins: 5);
+
+            Assert.AreEqual(150, scoreManager.score());
         }
 
         [TestMethod]
