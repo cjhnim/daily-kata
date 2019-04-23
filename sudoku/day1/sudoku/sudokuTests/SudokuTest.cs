@@ -8,7 +8,7 @@ namespace sudokuTests
     [TestClass]
     public class SudokuTest
     {
-        int[,] expected = new int[9, 9] {
+        int[,] solution = new int[9, 9] {
                 {5,3,4,6,7,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -29,7 +29,7 @@ namespace sudokuTests
         public void 답()
         {
             var sudoku = new Sudoku {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {5,3,4,6,7,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -42,7 +42,7 @@ namespace sudokuTests
                 }
             };
 
-            CollectionAssert.AreEqual(expected, sudoku.Solve());
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
         }
 
         [TestMethod]
@@ -50,7 +50,7 @@ namespace sudokuTests
         {
             var sudoku = new Sudoku
             {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {0,3,4,6,7,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -63,7 +63,7 @@ namespace sudokuTests
                 }
             };
 
-            Assert.AreEqual(expected[0, 0], sudoku.Solve()[0, 0]);
+            Assert.AreEqual(solution[0, 0], sudoku.Solve()[0, 0]);
         }
 
         [TestMethod]
@@ -71,7 +71,7 @@ namespace sudokuTests
         {
             var sudoku = new Sudoku
             {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {0,3,4,0,7,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -84,7 +84,7 @@ namespace sudokuTests
                 }
             };
 
-            Assert.AreEqual(expected[0, 0], sudoku.Solve()[0, 0]);
+            Assert.AreEqual(solution[0, 0], sudoku.Solve()[0, 0]);
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace sudokuTests
         {
             var sudoku = new Sudoku
             {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {0,3,4,0,7,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -105,7 +105,7 @@ namespace sudokuTests
                 }
             };
 
-            Assert.AreEqual(expected[0, 0], sudoku.Solve()[0, 0]);
+            Assert.AreEqual(solution[0, 0], sudoku.Solve()[0, 0]);
         }
 
         [TestMethod]
@@ -113,7 +113,7 @@ namespace sudokuTests
         {
             var sudoku = new Sudoku
             {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {0,3,4,6,0,8,9,1,2},
                 {6,7,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -126,7 +126,7 @@ namespace sudokuTests
                 }
             };
 
-            Assert.AreEqual(expected[0, 0], sudoku.Solve()[0, 0]);
+            Assert.AreEqual(solution[0, 0], sudoku.Solve()[0, 0]);
         }
 
 
@@ -135,7 +135,7 @@ namespace sudokuTests
         {
             var sudoku = new Sudoku
             {
-                question = new int[9, 9] {
+                Puzzle = new int[9, 9] {
                 {5,3,4,6,7,8,9,1,2},
                 {6,0,2,1,9,5,3,4,8},
                 {1,9,8,3,4,2,5,6,7},
@@ -148,10 +148,117 @@ namespace sudokuTests
                 }
             };
 
-            CollectionAssert.AreEqual(expected, sudoku.Solve());
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
         }
 
+        [TestMethod]
+        public void 반복찾기()
+        {
+            var sudoku = new Sudoku
+            {
+                Puzzle = new int[9, 9] {
+                {5,0,0,6,7,8,9,1,2},
+                {6,7,2,1,9,5,3,4,8},
+                {1,9,8,3,4,2,5,6,7},
+                {8,5,9,7,6,1,4,2,3},
+                {4,2,6,8,5,3,7,9,1},
+                {7,1,0,9,2,4,8,5,6},
+                {9,6,1,5,3,7,2,8,4},
+                {2,8,7,4,1,9,6,3,5},
+                {3,0,5,2,8,6,1,7,9}
+                }
+            };
 
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
+        }
+
+        [TestMethod]
+        public void 마지막문제()
+        {
+            var sudoku = new Sudoku
+            {
+                Puzzle = new int[9, 9] {
+                {5, 3, 0, 0, 7, 0, 0, 0, 0},
+                {6, 0, 0, 1, 9, 5, 0, 0, 0},
+                {0, 9, 8, 0, 0, 0, 0, 6, 0},
+                {8, 0, 0, 0, 6, 0, 0, 0, 3},
+                {4, 0, 0, 8, 0, 3, 0, 0, 1},
+                {7, 0, 0, 0, 2, 0, 0, 0, 6},
+                {0, 6, 0, 0, 0, 0, 2, 8, 0},
+                {0, 0, 0, 4, 1, 9, 0, 0, 5},
+                {0, 0, 0, 0, 8, 0, 0, 7, 9}
+                }
+            };
+
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
+        }
+
+        [TestMethod]
+        public void 별1개()
+        {
+            int[,] solution = new int[9, 9] {
+                {9, 4, 1,  3, 5, 2,  7, 8, 6},
+                {6, 7, 3,  8, 1, 9,  4, 5, 2},
+                {5, 2, 8,  7, 6, 4,  1, 3, 9},
+                {8, 1, 5,  9, 4, 3,  2, 6, 7},
+                {3, 6, 2,  1, 8, 7,  5, 9, 4},
+                {7, 9, 4,  5, 2, 6,  3, 1, 8},
+                {2, 5, 7,  6, 9, 1,  8, 4, 3},
+                {1, 3, 6,  4, 7, 8,  9, 2, 5},
+                {4, 8, 9,  2, 3, 5,  6, 7, 1}
+             };
+
+            var sudoku = new Sudoku
+            {
+                
+                Puzzle = new int[9, 9] {
+                {9, 4, 1,  0, 0, 2,  0, 0, 0},
+                {0, 0, 0,  0, 0, 0,  0, 5, 0},
+                {0, 0, 0,  7, 0, 0,  1, 3, 0},
+                {8, 0, 0,  0, 0, 3,  0, 6, 0},
+                {3, 6, 2,  1, 0, 7,  5, 9, 4},
+                {0, 9, 0,  5, 0, 0,  0, 0, 8},
+                {0, 5, 7,  0, 0, 1,  0, 0, 0},
+                {0, 3, 0,  0, 0, 0,  0, 0, 0},
+                {0, 0, 0,  2, 0, 0,  6, 7, 1}
+                }
+            };
+
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
+        }
+
+        [TestMethod]
+        public void 별2개()
+        {
+            int[,] solution = new int[9, 9] {
+                {4, 3, 5,  9, 6, 1,  2, 7, 8},
+                {7, 6, 9,  4, 8, 2,  3, 1, 5},
+                {1, 2, 8,  3, 5, 7,  9, 4, 6},
+                {9, 5, 4,  8, 1, 6,  7, 2, 3},
+                {3, 1, 2,  5, 7, 9,  6, 8, 4},
+                {8, 7, 6,  2, 3, 4,  1, 5, 9},
+                {6, 8, 7,  1, 9, 5,  4, 3, 2},
+                {5, 4, 1,  6, 2, 3,  8, 9, 7},
+                {2, 9, 3,  7, 4, 8,  5, 6, 1}
+             };
+
+            var sudoku = new Sudoku
+            {
+                Puzzle = new int[9, 9] {
+                {4, 3, 5,  0, 6, 1,  0, 7, 0},
+                {7, 6, 0,  0, 0, 0,  3, 0, 0},
+                {0, 0, 0,  0, 0, 0,  0, 4, 0},
+                {0, 0, 0,  8, 0, 0,  0, 0, 3},
+                {3, 0, 0,  5, 7, 9,  0, 0, 4},
+                {8, 0, 0,  0, 0, 4,  0, 0, 0},
+                {0, 8, 0,  0, 0, 0,  0, 0, 0},
+                {0, 0, 1,  0, 0, 0,  0, 9, 7},
+                {0, 9, 0,  7, 4, 0,  5, 6, 1}
+                }
+            };
+
+            CollectionAssert.AreEqual(solution, sudoku.Solve());
+        }
 
         //[TestMethod]
         //public void 수평수직검색_두개의해에서답찾기()

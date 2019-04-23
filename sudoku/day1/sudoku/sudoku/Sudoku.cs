@@ -9,7 +9,7 @@ namespace sudoku
     {
         private const int EMPTY = 0;
 
-        public int[,] question
+        public int[,] Puzzle
         {
             set;
             get;
@@ -21,22 +21,32 @@ namespace sudoku
 
         public int[,] Solve()
         {
-            foreach (int yPos in Enumerable.Range(0, 9))
+            while (true)
             {
-                foreach (int xPos in Enumerable.Range(0, 9))
-                {
-                    if (question[xPos, yPos] == EMPTY)
-                    {
-                        List<int> result = SolveAtPosition(xPos, yPos);
+                bool solved = true;
 
-                        if (result.Count == 1)
-                            question[xPos, yPos] = result[0];
-                        else
-                            throw new NotImplementedException();
+                foreach (int y in Enumerable.Range(0, 9))
+                {
+                    foreach (int x in Enumerable.Range(0, 9))
+                    {
+                        if (Puzzle[x, y] == EMPTY)
+                        {
+                            List<int> result = SolveGivenPosition(x, y);
+
+                            if (result.Count == 1)
+                                Puzzle[x, y] = result[0];
+                            else
+                                solved = false;
+                        }
                     }
                 }
-            }
 
+                if (solved)
+                {
+                    // 다풀었음
+                    break;
+                }
+            }
 
             //// 빈 부분에 경우의 수를 넣어라
             //var hashTable = new Hashtable();
@@ -61,25 +71,23 @@ namespace sudoku
             //    }
             //}
 
-            return question;
+            return Puzzle;
         }
 
-        private List<int> SolveAtPosition(int xPos, int yPos)
+        private List<int> SolveGivenPosition(int xPos, int yPos)
         {
-
-
             var numbers = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+            // 수직 조각 답찾기
             var vSlice = Enumerable.Range(0, 9)
-                .Select(x => question[xPos, x])
+                .Select(x => Puzzle[xPos, x])
                 .ToList<int>();
 
             var candidatesX = numbers.Except(vSlice).ToList();
 
-
             // 수직 조각 답찾기
             var hSlice = Enumerable.Range(0, 9)
-                .Select(x => question[x, yPos])
+                .Select(x => Puzzle[x, yPos])
                 .ToList<int>();
 
             var candidatesY = numbers.Except(hSlice).ToList();
@@ -92,7 +100,7 @@ namespace sudoku
             uint startY = ((uint) yPos / 3)*3;
             foreach (int x in Enumerable.Range((int)startX, 3))
                 foreach (int y in Enumerable.Range((int)startY, 3))
-                    cSlice.Add(question[x, y]);
+                    cSlice.Add(Puzzle[x, y]);
 
             var candidatesCenter = numbers.Except(cSlice).ToList();
 
