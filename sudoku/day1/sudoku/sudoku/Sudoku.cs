@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace sudoku
@@ -21,10 +22,11 @@ namespace sudoku
 
         public int[,] Solve()
         {
+            var hashTable = new Hashtable();
+
+            int oldCount = 0;
             while (true)
             {
-                bool solved = true;
-
                 foreach (int y in Enumerable.Range(0, 9))
                 {
                     foreach (int x in Enumerable.Range(0, 9))
@@ -34,17 +36,46 @@ namespace sudoku
                             List<int> result = SolveGivenPosition(x, y);
 
                             if (result.Count == 1)
+                            {
                                 Puzzle[x, y] = result[0];
+                                Tuple<int, int> point = new Tuple<int, int>(x, y);
+                                hashTable.Remove(point);
+                            }
                             else
-                                solved = false;
+                            {
+                                //solved = false;
+                                Tuple<int, int> point = new Tuple<int, int>(x, y);
+                                hashTable.Remove(point);
+                                hashTable.Add(point, result);
+                            }
                         }
                     }
                 }
 
-                if (solved)
+                if (hashTable.Count == 0)
                 {
                     // 다풀었음
                     break;
+                }
+                else
+                {
+                    if (oldCount == hashTable.Count)
+                    {
+                        Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+                        Trace.WriteLine("Hello World");
+
+                        foreach (int y in Enumerable.Range(0, 9))
+                        {
+                            foreach (int x in Enumerable.Range(0, 9))
+                            {
+                                Trace.Write(Puzzle[y, x] + " ");
+                            }
+                            Trace.WriteLine("");
+                        }
+                        throw new NotImplementedException();
+                    }
+
+                    oldCount = hashTable.Count;
                 }
             }
 
