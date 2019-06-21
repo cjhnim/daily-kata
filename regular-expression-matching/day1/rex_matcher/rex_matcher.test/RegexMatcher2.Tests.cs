@@ -10,128 +10,116 @@ namespace rex_matcher.test
     [TestClass]
     public class RegexMatcher2
     {
-        
+
 
         [TestMethod]
         public void 한문자는한문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "a", Text: "a"));
+            Assert.IsTrue(RegexMatcher.IsMatch("a", "a"));
         }
 
         [TestMethod]
         public void 두문자는두문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "aa", Text: "aa"));
+            Assert.IsTrue(RegexMatcher.IsMatch("aa", "aa"));
         }
 
         [TestMethod]
         public void 세문자는세문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "aaa", Text: "aaa"));
+            Assert.IsTrue(RegexMatcher.IsMatch("aaa", "aaa"));
         }
 
         [TestMethod]
         public void 두문자는한문자와대응하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern: "aa", Text: "a"));
+            Assert.IsFalse(RegexMatcher.IsMatch("a", "aa"));
         }
 
         [TestMethod]
         public void 두문자는한문자와대응하지않는다2()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern: "aa", Text: "aaa"));
+            Assert.IsFalse(RegexMatcher.IsMatch("aaa", "aa"));
         }
 
         [TestMethod]
         public void 점은한문자와매칭이다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: ".", Text: "a"));
+            Assert.IsTrue(RegexMatcher.IsMatch("a", "."));
         }
 
         [TestMethod]
         public void 점은두문자와매칭하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern: ".", Text: "aa"));
+            Assert.IsFalse(RegexMatcher.IsMatch("aa", "."));
         }
 
         [TestMethod]
         public void 점은적어도한문자를포함해야한다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern: ".", Text: ""));
+            Assert.IsFalse(RegexMatcher.IsMatch("", "."));
         }
 
         [TestMethod]
         public void 점두개는두문자와매칭한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "..", Text: "aa"));
+            Assert.IsTrue(RegexMatcher.IsMatch("aa", ".."));
         }
 
         [TestMethod]
         public void 점세개는세문자와매칭한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "...", Text: "aaa"));
+            Assert.IsTrue(RegexMatcher.IsMatch("aaa", "..."));
         }
 
         [TestMethod]
         public void 점세개는네문자와매칭하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern: "...", Text: "aaaa"));
+            Assert.IsFalse(RegexMatcher.IsMatch("aaaa", "..."));
         }
 
         [TestMethod]
         public void 별은공백과대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "a*", Text: ""));
+            Assert.IsTrue(RegexMatcher.IsMatch("", "a*"));
         }
 
         [TestMethod]
         public void 별은공백과대응하고한글자는한글자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "a*b", Text: "b"));
+            Assert.IsTrue(RegexMatcher.IsMatch("b", "a*b"));
         }
 
         [TestMethod]
         public void 별은한문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern: "a*", Text: "a"));
+            Assert.IsTrue(RegexMatcher.IsMatch("a", "a*"));
         }
 
         [DataTestMethod]
-        [DataRow("a", "aa")]
-        [DataRow("mis*is*p*.", "mississippi")]
-        public void FinalExam_ShouldFalse(string Pattern, string Text)
+        [DataRow("aa", "a*", true)]
+        [DataRow("ab", ".*", true)]
+        [DataRow("aab", "c*a*b", true)]
+        [DataRow("aa", "a", false)]
+        [DataRow("mississippi", "mis*is*p*.", false)]
+        public void LeeCodeDemoTests(string Text, string Pattern, bool ExpectedResult)
         {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern, Text));
+            Assert.AreEqual(ExpectedResult, RegexMatcher.IsMatch(Text, Pattern));
         }
 
         [DataTestMethod]
-        [DataRow("a*", "aa")]
-        [DataRow(".*", "ab")]
-        [DataRow("c*a*b", "aab")]
-        public void FinalExam_ShouldTrue(string Pattern, string Text)
+        [DataRow("", "", true)]
+        [DataRow("aaa", "a*a", true)]
+        [DataRow("a", "ab*", true)]
+        [DataRow("ab", ".*..", true)]
+        [DataRow("aaa", "ab*a*c*a", true)]
+        [DataRow("aasdfasdfasdfasdfas", "aasdf.*asdf.*asdf.*asdf.*s", true)]
+        [DataRow("abcd", "d*", false)]
+        [DataRow("", "a", false)]
+        [DataRow("ab", ".*c", false)]
+        public void LeetCodeTestCases(string Text, string Pattern, bool ExpectedResult)
         {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern, Text));
-        }
-
-        [DataTestMethod]
-        [DataRow("", "")]
-        [DataRow("a*a", "aaa")]
-        [DataRow("ab*", "a")]
-        [DataRow(".*..", "ab")]
-        [DataRow("ab*a*c*a", "aaa")]
-        [DataRow("aasdf.*asdf.*asdf.*asdf.*s", "aasdfasdfasdfasdfas")]
-        public void LeetCode_ShouldTrue(string Pattern, string Text)
-        {
-            Assert.IsTrue(RegexMatcher.IsMatch(Pattern, Text));
-        }
-
-        [DataTestMethod]
-        [DataRow("d*", "abcd")]
-        [DataRow("a", "")]
-        [DataRow(".*c", "ab")]
-        public void LeetCode_ShouldFalse(string Pattern, string Text)
-        {
-            Assert.IsFalse(RegexMatcher.IsMatch(Pattern, Text));
+            Assert.AreEqual(ExpectedResult, RegexMatcher.IsMatch(Text, Pattern));
         }
     }
 }
