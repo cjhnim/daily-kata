@@ -10,90 +10,96 @@ namespace rex_matcher.test
     [TestClass]
     public class RegexMatcher2
     {
+        private RegexMatcher matcher;
 
+        [TestInitialize]
+        public void SetUp()
+        {
+            matcher = new RegexMatcher();
+        }
 
         [TestMethod]
         public void 한문자는한문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("a", "a"));
+            Assert.IsTrue(matcher.IsMatch("a", "a"));
         }
 
         [TestMethod]
         public void 두문자는두문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("aa", "aa"));
+            Assert.IsTrue(matcher.IsMatch("aa", "aa"));
         }
 
         [TestMethod]
         public void 세문자는세문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("aaa", "aaa"));
+            Assert.IsTrue(matcher.IsMatch("aaa", "aaa"));
         }
 
         [TestMethod]
         public void 두문자는한문자와대응하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch("a", "aa"));
+            Assert.IsFalse(matcher.IsMatch("a", "aa"));
         }
 
         [TestMethod]
         public void 두문자는한문자와대응하지않는다2()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch("aaa", "aa"));
+            Assert.IsFalse(matcher.IsMatch("aaa", "aa"));
         }
 
         [TestMethod]
         public void 점은한문자와매칭이다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("a", "."));
+            Assert.IsTrue(matcher.IsMatch("a", "."));
         }
 
         [TestMethod]
         public void 점은두문자와매칭하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch("aa", "."));
+            Assert.IsFalse(matcher.IsMatch("aa", "."));
         }
 
         [TestMethod]
         public void 점은적어도한문자를포함해야한다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch("", "."));
+            Assert.IsFalse(matcher.IsMatch("", "."));
         }
 
         [TestMethod]
         public void 점두개는두문자와매칭한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("aa", ".."));
+            Assert.IsTrue(matcher.IsMatch("aa", ".."));
         }
 
         [TestMethod]
         public void 점세개는세문자와매칭한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("aaa", "..."));
+            Assert.IsTrue(matcher.IsMatch("aaa", "..."));
         }
 
         [TestMethod]
         public void 점세개는네문자와매칭하지않는다()
         {
-            Assert.IsFalse(RegexMatcher.IsMatch("aaaa", "..."));
+            Assert.IsFalse(matcher.IsMatch("aaaa", "..."));
         }
 
         [TestMethod]
         public void 별은공백과대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("", "a*"));
+            Assert.IsTrue(matcher.IsMatch("", "a*"));
         }
 
         [TestMethod]
         public void 별은공백과대응하고한글자는한글자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("b", "a*b"));
+            Assert.IsTrue(matcher.IsMatch("b", "a*b"));
         }
 
         [TestMethod]
         public void 별은한문자와대응한다()
         {
-            Assert.IsTrue(RegexMatcher.IsMatch("a", "a*"));
+            Assert.IsTrue(matcher.IsMatch("a", "a*"));
         }
 
         [DataTestMethod]
@@ -104,7 +110,7 @@ namespace rex_matcher.test
         [DataRow("mississippi", "mis*is*p*.", false)]
         public void LeeCodeDemoTests(string Text, string Pattern, bool ExpectedResult)
         {
-            Assert.AreEqual(ExpectedResult, RegexMatcher.IsMatch(Text, Pattern));
+            Assert.AreEqual(ExpectedResult, matcher.IsMatch(Text, Pattern));
         }
 
         [DataTestMethod]
@@ -119,7 +125,7 @@ namespace rex_matcher.test
         [DataRow("ab", ".*c", false)]
         public void LeetCodeTestCases(string Text, string Pattern, bool ExpectedResult)
         {
-            Assert.AreEqual(ExpectedResult, RegexMatcher.IsMatch(Text, Pattern));
+            Assert.AreEqual(ExpectedResult, matcher.IsMatch(Text, Pattern));
         }
     }
 }
