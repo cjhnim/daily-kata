@@ -27,15 +27,7 @@ namespace CompareVersion
 
         private int IntegerCompare(string valueString1, string valueString2)
         {
-            int ver1 = ParseToInt(valueString1);
-            int ver2 = ParseToInt(valueString2);
-
-            if (ver1 == ver2)
-                return 0;
-            else if (ver1 > ver2)
-                return 1;
-            else
-                return -1;
+            return Math.Sign(ParseToInt(valueString1).CompareTo(ParseToInt(valueString2)));
         }
 
         private int ParseToInt(string valueString)
