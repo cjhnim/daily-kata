@@ -10,24 +10,25 @@ namespace CompareVersion
 
         public int CompareVersion(string version1, string version2)
         {
-            var verData1 = VersionData.Create(version1);
-            var verData2 = VersionData.Create(version2);
+            var versionElements1 = VersionElements.Create(version1);
+            var versionElements2 = VersionElements.Create(version2);
 
-            int result = CompareIntegerVersion(verData1.front, verData2.front);
-            if (0 != result || (string.IsNullOrEmpty(verData1.rear) && string.IsNullOrEmpty(verData2.rear)))
-            {
-                return result;
-            }
+            int result = IntegerCompare(versionElements1.Major, versionElements2.Major);
+            if (0 == result && AreThereMoreElementsToCompare(versionElements1, versionElements2))
+                return CompareVersion(versionElements1.Minors, versionElements2.Minors);
             else
-            {
-                return CompareVersion(verData1.rear, verData2.rear);
-            }
+                return result;
         }
 
-        private int CompareIntegerVersion(string version1, string version2)
+        private bool AreThereMoreElementsToCompare(VersionElements verData1, VersionElements verData2)
         {
-            int ver1 = string.IsNullOrEmpty(version1) ? 0 : int.Parse(version1);
-            int ver2 = string.IsNullOrEmpty(version2) ? 0 : int.Parse(version2);
+            return !string.IsNullOrEmpty(verData1.Minors) || !string.IsNullOrEmpty(verData2.Minors);
+        }
+
+        private int IntegerCompare(string valueString1, string valueString2)
+        {
+            int ver1 = ParseToInt(valueString1);
+            int ver2 = ParseToInt(valueString2);
 
             if (ver1 == ver2)
                 return 0;
@@ -37,34 +38,37 @@ namespace CompareVersion
                 return -1;
         }
 
-        public class VersionData
+        private int ParseToInt(string valueString)
         {
-            public string front { set; get;}
-            public string rear { set; get; }
+            return string.IsNullOrEmpty(valueString) ? 0 : int.Parse(valueString);
+        }
 
-            public VersionData()
+        public class VersionElements
+        {
+            public string Major { set; get; } = "";
+            public string Minors { set; get; } = "";
+
+            public VersionElements()
             {
-                front = "";
-                rear = "";
             }
 
-            static public VersionData Create(string version)
+            static public VersionElements Create(string version)
             {
-                int dotPos = version.IndexOf('.');
+                int versionSeparatorIndex = version.IndexOf('.');
 
-                if (dotPos == -1)
+                if (versionSeparatorIndex == -1)
                 {
-                    return new VersionData()
+                    return new VersionElements()
                     {
-                        front = version
+                        Major = version
                     };
                 }
                 else
                 {
-                    return new VersionData()
+                    return new VersionElements()
                     {
-                        front = version.Substring(0, dotPos),
-                        rear = version.Substring(dotPos + 1)
+                        Major = version.Substring(0, versionSeparatorIndex),
+                        Minors = version.Substring(versionSeparatorIndex + 1)
                     };
                 };
             }
