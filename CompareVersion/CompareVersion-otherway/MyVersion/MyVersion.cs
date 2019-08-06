@@ -11,32 +11,29 @@ namespace MyVersion
 
             for (int i = 0; i < versionArray1.Length || i < versionArray2.Length; i++)
             {
-                int v1, v2;
-                try
-                {
-                    v1 = int.Parse(versionArray1[i]);
-                } catch(IndexOutOfRangeException)
-                {
-                    v1 = 0;
-                }
+                int value1 = 0, value2 = 0;
+                int.TryParse(GetString(versionArray1, i), out value1) ;
+                int.TryParse(GetString(versionArray2, i), out value2) ;
 
-                try
-                {
-                    v2 = int.Parse(versionArray2[i]);
-                } catch(IndexOutOfRangeException)
-                {
-                    v2 = 0;
-                }
-
-                if (v1 == v2)
-                    continue;
-                else if (v1 > v2)
+                if (value1 > value2)
                     return 1;
-                else
+                else if( value1 < value2)
                     return -1;
             }
 
             return 0;
+        }
+
+        static string GetString(string[] array, int index)
+        {
+            try
+            {
+                return array[index];
+            }
+            catch (System.IndexOutOfRangeException e)  // CS0168
+            {
+                return "";
+            }
         }
     }
 }
