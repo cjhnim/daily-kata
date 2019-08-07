@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyVersion;
 
 namespace CompareVersion_otherway
 {
     [TestClass]
-    public class UnitTest1
+    public class VersionCheckerTests
     {
         [TestMethod]
         [DataRow("1", "1", 0, DisplayName = "한자리같은값")]
@@ -24,9 +25,9 @@ namespace CompareVersion_otherway
         [DataRow("1.01", "1.001", 0, DisplayName = "IgnoreZero")]
         [DataRow("1.0", "1.0.0", 0, DisplayName = "IgnoreTwoDot")]
         [DataRow("1.1", "1.10", -1, DisplayName = "NoIgnoreZero")]
-        public void TestMethod1(string Version1, string Version2, int ExpectResult)
+        public void 버전비교(string Version1, string Version2, int ExpectResult)
         {
-            Assert.AreEqual(ExpectResult, MyVersion.MyVersion.CompareVersion(Version1, Version2));
+            Assert.AreEqual(ExpectResult, new VersionChecker().CompareVersion(Version1, Version2));
         }
     }
 }

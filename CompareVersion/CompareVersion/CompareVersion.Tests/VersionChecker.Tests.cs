@@ -1,19 +1,20 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CompareVersion.Tests
+namespace MyVersion.Tests
 {
     [TestClass]
-    public class VersionComparerTests
+    public class VersionCheckerTests
     {
         public void CanInitiate()
         {
-            var versionComparer = new VersionComparer();
+            var versionComparer = new VersionChecker();
         }
 
         [TestMethod]
         [DataRow("1", "1", 0, DisplayName = "SameVersion")]
         [DataRow("2", "1", 1, DisplayName = "GreaterVersion")]
+        [DataRow("10", "1", 1, DisplayName = "GreaterVersion2")]
         [DataRow("1", "2", -1, DisplayName = "LowerVersion")]
         [DataRow("0.1", "1.1", -1, DisplayName = "LowerVersionOfOneDot")]
         [DataRow("0.2", "0.1", 1, DisplayName = "GreaterVersionOfOneDot")]
@@ -24,7 +25,7 @@ namespace CompareVersion.Tests
         [DataRow("1.1", "1.10", -1, DisplayName = "NoIgnoreZero")]
         public void CompreVersion(string version1, string version2, int compareResult)
         {
-            Assert.AreEqual(compareResult, new VersionComparer().CompareVersion(version1, version2));
+            Assert.AreEqual(compareResult, new VersionChecker().CompareVersion(version1, version2));
         }
     }
 }

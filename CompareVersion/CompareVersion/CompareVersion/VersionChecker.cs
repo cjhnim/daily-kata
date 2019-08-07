@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace CompareVersion
+namespace MyVersion
 {
-    public class VersionComparer
+    public class VersionChecker
     {
-        public VersionComparer()
+        public VersionChecker()
         {
         }
 
@@ -13,7 +13,7 @@ namespace CompareVersion
             var versionElements1 = VersionElements.Create(version1);
             var versionElements2 = VersionElements.Create(version2);
 
-            int result = IntegerCompare(versionElements1.Major, versionElements2.Major);
+            int result = IntegerStringCompare(versionElements1.Major, versionElements2.Major);
             if (0 == result && AreThereMoreElementsToCompare(versionElements1, versionElements2))
                 return CompareVersion(versionElements1.Minors, versionElements2.Minors);
             else
@@ -25,9 +25,9 @@ namespace CompareVersion
             return !string.IsNullOrEmpty(verData1.Minors) || !string.IsNullOrEmpty(verData2.Minors);
         }
 
-        private int IntegerCompare(string valueString1, string valueString2)
+        private int IntegerStringCompare(string valueString1, string valueString2)
         {
-            return Math.Sign(ParseToInt(valueString1).CompareTo(ParseToInt(valueString2)));
+            return ParseToInt(valueString1).CompareTo(ParseToInt(valueString2));
         }
 
         private int ParseToInt(string valueString)
