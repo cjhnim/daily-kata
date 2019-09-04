@@ -2,41 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MaxBinaryTree
 {
     public class MaxBinaryTreeCreator
     {
-        public static TreeNode ConstructMaximumBinaryTree(int[] nums)
+        public TreeNode ConstructMaximumBinaryTree(int[] nums)
         {
-            if (nums.Length == 1)
+            return ConstructMaxBinTreeInRange(nums, 0, nums.Length);
+        }
+
+        private TreeNode ConstructMaxBinTreeInRange(int[] nums, int offset, int length)
+        {
+            if (offset == length)
+                return null;
+
+            int max_index = MaxIndexInRange(nums, offset, length);
+
+            var top = new TreeNode(nums[max_index]);
+
+            top.left = ConstructMaxBinTreeInRange(nums, offset, max_index);
+            top.right = ConstructMaxBinTreeInRange(nums, max_index + 1, length);
+
+            return top;
+        }
+
+
+        private static int MaxIndexInRange(int[] nums, int start, int end)
+        {
+            int max_index = start;
+            for (int i = start; i < end; i++)
             {
-                return TreeNodeCreate(nums[0]);
+                if (nums[max_index] < nums[i])
+                    max_index = i;
             }
-
-            int index = GetMaxNumberIndex(nums);
-
-            var topNode = TreeNodeCreate(nums[index]);
-
-            if(index + 1 != nums.Length)
-                topNode.right = ConstructMaximumBinaryTree(nums.Skip(index + 1).ToArray());
-
-            if(index != 0)
-                topNode.left = ConstructMaximumBinaryTree(nums.Take(index).ToArray());
-
-            return topNode;
-        }
-
-        private static int GetMaxNumberIndex(int[] nums)
-        {
-            int maxValue = nums.Max();
-            return nums.ToList().IndexOf(maxValue);
-        }
-
-        public static TreeNode TreeNodeCreate(int nums)
-        {
-            return new TreeNode(nums);
+            return max_index;
         }
     }
 }
