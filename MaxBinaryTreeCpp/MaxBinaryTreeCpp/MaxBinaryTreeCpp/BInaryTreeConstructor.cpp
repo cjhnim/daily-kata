@@ -16,30 +16,28 @@ TreeNode* BinaryTreeConstructor::constructMaximumBinaryTree(vector<int>& nums) {
 	return construct(nums, 0, nums.size());
 }
 
-TreeNode* BinaryTreeConstructor::construct(vector<int>& nums, int offset, int len)
+TreeNode* BinaryTreeConstructor::construct(vector<int>& nums, int startIndex, int endIndex)
 {
-	if (offset == len)
+	if (startIndex == endIndex)
 		return NULL;
 
-	int max_index = getMaxIndex(nums, offset, len);
+	int max_index = getMaxIndex(nums, startIndex, endIndex);
 
 	TreeNode *node = new TreeNode(nums[max_index]);
-	node->left = construct(nums, offset, max_index);
-	node->right = construct(nums, max_index + 1, len);
+	node->left = construct(nums, startIndex, max_index);
+	node->right = construct(nums, max_index + 1, endIndex);
 
 	return node;
 }
 
-int BinaryTreeConstructor::getMaxIndex(vector<int>& nums, int offset, int len)
+int BinaryTreeConstructor::getMaxIndex(vector<int>& nums, int startIndex, int endIndex)
 {
-	int max = nums[offset];
-	int max_index = offset;
+	int max_index = startIndex;
 
-	for(int i=offset; i<len; i++)
+	for(int i=startIndex; i<endIndex; i++)
 	{
-		if (nums[i] > max)
+		if (nums[i] > nums[max_index])
 		{
-			max = nums[i];
 			max_index = i;
 		}
 	}

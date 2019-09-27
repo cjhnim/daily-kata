@@ -9,31 +9,30 @@ namespace MaxBinaryTree
 {
     public class MaxBinaryTreeCreator
     {
-        public TreeNode ConstructMaximumBinaryTree(int[] nums)
+        public TreeNode ConstructMaximumBinaryTree(ref int[] nums)
         {
-            return ConstructMaxBinTreeInRange(nums, 0, nums.Length);
+            return ConstructMaxBinTreeInRange(ref nums, 0, nums.Length);
         }
 
-        private TreeNode ConstructMaxBinTreeInRange(int[] nums, int offset, int length)
+        private TreeNode ConstructMaxBinTreeInRange(ref int[] nums, int startIndex, int endIndex)
         {
-            if (offset == length)
+            if (startIndex == endIndex)
                 return null;
 
-            int max_index = MaxIndexInRange(nums, offset, length);
+            int max_index = MaxIndexInRange(ref nums, startIndex, endIndex);
 
             var top = new TreeNode(nums[max_index]);
 
-            top.left = ConstructMaxBinTreeInRange(nums, offset, max_index);
-            top.right = ConstructMaxBinTreeInRange(nums, max_index + 1, length);
+            top.left = ConstructMaxBinTreeInRange(ref nums, startIndex, max_index);
+            top.right = ConstructMaxBinTreeInRange(ref nums, max_index + 1, endIndex);
 
             return top;
         }
 
-
-        private static int MaxIndexInRange(int[] nums, int start, int end)
+        private static int MaxIndexInRange(ref int[] nums, int startIndex, int endIndex)
         {
-            int max_index = start;
-            for (int i = start; i < end; i++)
+            int max_index = startIndex;
+            for (int i = startIndex; i < endIndex; i++)
             {
                 if (nums[max_index] < nums[i])
                     max_index = i;

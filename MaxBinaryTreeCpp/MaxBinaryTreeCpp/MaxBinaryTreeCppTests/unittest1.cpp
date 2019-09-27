@@ -12,24 +12,30 @@ namespace MaxBinaryTreeCppTests
 {		
 	TEST_CLASS(UnitTest1)
 	{
+		BinaryTreeConstructor *constructor;
+
 	public:
-		
+		TEST_METHOD_INITIALIZE(SetUp)
+		{
+			constructor = new BinaryTreeConstructor();
+		}
+
+		TEST_METHOD_CLEANUP(CleanUp)
+		{
+			delete constructor;
+		}
+
 		TEST_METHOD(New_TreeNode)
 		{
 			TreeNode *node = new TreeNode(1);
 
 			Assert::AreEqual(1, node->val);
-		}
-
-		TEST_METHOD(New_BinaryTreeConstructor)
-		{
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
+			delete node;
 		}
 
 		TEST_METHOD(NullArray)
 		{
 			vector<int> nums = { };
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
 			TreeNode *root = constructor->constructMaximumBinaryTree(nums);
 			Assert::IsNull(root);
 		}
@@ -37,7 +43,6 @@ namespace MaxBinaryTreeCppTests
 		TEST_METHOD(OneArray)
 		{
 			vector<int> nums = { 1 };
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
 			TreeNode *root = constructor->constructMaximumBinaryTree(nums);
 			Assert::AreEqual(1, root->val);
 		}
@@ -45,7 +50,6 @@ namespace MaxBinaryTreeCppTests
 		TEST_METHOD(TwoArray_right)
 		{
 			vector<int> nums = { 2, 1 };
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
 			TreeNode *root = constructor->constructMaximumBinaryTree(nums);
 			Assert::AreEqual(2, root->val);
 			Assert::IsNull(root->left);
@@ -55,7 +59,6 @@ namespace MaxBinaryTreeCppTests
 		TEST_METHOD(TwoArray_left)
 		{
 			vector<int> nums = { 1, 2 };
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
 			TreeNode *root = constructor->constructMaximumBinaryTree(nums);
 			Assert::AreEqual(2, root->val);
 			Assert::AreEqual(1, root->left->val);
@@ -66,7 +69,6 @@ namespace MaxBinaryTreeCppTests
 		{
 			vector<int> nums = { 3, 2, 1, 6, 0, 5 };
 
-			BinaryTreeConstructor *constructor = new BinaryTreeConstructor();
 			TreeNode *root = constructor->constructMaximumBinaryTree(nums);
 			Assert::AreEqual(6,		root->val);
 			Assert::AreEqual(3,		root->left->val);
@@ -78,6 +80,5 @@ namespace MaxBinaryTreeCppTests
 			Assert::IsNull(			root->left->right->left);
 			Assert::AreEqual(1,		root->left->right->right->val);
 		}
-
 	};
 }
