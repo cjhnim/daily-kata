@@ -17,30 +17,25 @@ namespace Island
         {
             if (grid == null || grid.Length == 0)
                 return 0;
+            
+            guestBook = NewGuestBook(grid);
 
-            int i = 0;
+            int max = 0;
+            for (int col = 0; col < grid.Length; col++)
+                for (int row = 0; row < grid[col].Length; row++)
+                    max = Math.Max(max, islandCheck(grid, col, row));
 
+            return max;
+        }
 
-            guestBook = new int[grid.Length][];
+        private int[][] NewGuestBook(int[][] grid)
+        {
+            var guestBook = new int[grid.Length][];
 
-            for (i = 0; i < grid.Length; i++)
-            {
+            for (int i = 0; i < grid.Length; i++)
                 guestBook[i] = new int[grid[i].Length];
-            }
 
-            int maxSize = 0;
-            for (i = 0; i < grid.Length; i++)
-            {
-                for (int j = 0; j < grid[i].Length; j++)
-                {
-                    int size = islandCheck(grid, i, j);
-
-                    if (size > maxSize)
-                        maxSize = size;
-                }
-            }
-
-            return maxSize;
+            return guestBook;
         }
 
         private int islandCheck(int[][] grid, int col, int row)
@@ -55,12 +50,13 @@ namespace Island
 
             check(col, row);
 
-            int size = islandCheck(grid, col + 1, row);
+            int size = 1;
+            size += islandCheck(grid, col + 1, row);
             size += islandCheck(grid, col - 1, row);
             size += islandCheck(grid, col, row - 1);
             size += islandCheck(grid, col, row + 1);
 
-            return ++size;
+            return size;
         }
 
         private static bool outOfRange(int[][] grid, int col, int row)
