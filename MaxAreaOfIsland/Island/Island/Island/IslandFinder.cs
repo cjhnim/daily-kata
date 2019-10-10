@@ -40,7 +40,6 @@ namespace Island
 
         private int islandCheck(int[][] grid, int col, int row)
         {
-
             if (outOfRange(grid, col, row) ||
                 isWater(grid, col, row) ||
                 alreadyCheck(col, row))
