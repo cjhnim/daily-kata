@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Island_tests
 {
     [TestClass]
-    public class UnitTest1
+    public class RecursiveWay
     {
         [TestMethod]
         public void CanInitiate()

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Island_tests
 {
     [TestClass]
-    public class UnitTest2
+    public class DFSWay
     {
         [TestMethod]
         public void CanInitialize()

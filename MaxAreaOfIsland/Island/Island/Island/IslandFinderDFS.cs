@@ -10,6 +10,20 @@ namespace Island
         private const int VISITED = 1;
         private const int NOT_VISITED = 0;
 
+        private class CordinateStack : Stack<int>
+        {
+            public void Push(int col, int row)
+            {
+                Push(col);
+                Push(row);
+            }
+
+            public void Pop(out int col, out int row)
+            {
+                row = Pop();
+                col = Pop();
+            }
+        }
         public IslandFinderDFS()
         {
         }
@@ -19,47 +33,46 @@ namespace Island
             if (grid == null)
                 return 0;
 
-            int maxLandSize = 0;
+            int max = 0;
             int[][] seen = CreateTwoDimArray(grid);
 
             for (int col = 0; col < grid.Length; col++)
             {
                 for (int row = 0; row < grid[col].Length; row++)
                 {
-                    int curLandSize = 0;
+                    int size = 0;
 
-                    var stack = new Stack<int>();
+                    var stack = new CordinateStack();
 
-                    PushToStack(stack, col, row);
+                    stack.Push(col, row);
 
                     while (stack.Count > 0)
                     {
-                        int nearRow, nearCol;
-                        PopFromStack(stack, out nearCol, out nearRow);
+                        int r, c;
+                        stack.Pop(out c, out r);
 
-                        if (HaveYouSeen(seen, nearCol, nearRow) && IsLand(grid, nearCol, nearRow))
+                        if (!HaveYouSeen(seen, c, r) &&
+                            IsThisLand(grid, c, r))
                         {
-                            ++curLandSize;
-                            Check(seen, nearCol, nearRow);
-                            if (IsIsland(grid, stack, nearCol, nearRow + 1))
-                                PushToStack(stack, nearCol, nearRow + 1);
+                            ++size;
+                            Check(seen, c, r);
+                            if (IsThisLand(grid, c, r + 1))
+                                stack.Push(c, r + 1);
 
-                            if (IsIsland(grid, stack, nearCol, nearRow - 1))
-                                PushToStack(stack, nearCol, nearRow - 1);
+                            if (IsThisLand(grid, c, r - 1))
+                                stack.Push(c, r - 1);
 
-                            if (IsIsland(grid, stack, nearCol + 1, nearRow))
-                                PushToStack(stack, nearCol + 1, nearRow);
+                            if (IsThisLand(grid, c + 1, r))
+                                stack.Push(c + 1, r);
 
-                            if (IsIsland(grid, stack, nearCol - 1, nearRow))
-                                PushToStack(stack, nearCol - 1, nearRow);
+                            if (IsThisLand(grid, c - 1, r))
+                                stack.Push(c - 1, r);
                         }
                     }
-
-                    maxLandSize = Math.Max(curLandSize, maxLandSize);
+                    max = Math.Max(size, max);
                 }
             }
-
-            return maxLandSize;
+            return max;
         }
 
         private int[][] CreateTwoDimArray(int[][] grid)
@@ -69,37 +82,20 @@ namespace Island
                 array[i] = new int[grid[i].Length];
             return array;
         }
-
-        private void PopFromStack(Stack<int> stack, out int nearCol, out int nearRow)
-        {
-            nearRow = stack.Pop();
-            nearCol = stack.Pop();
-        }
-
-        private void PushToStack(Stack<int> stack, int col, int row)
-        {
-            stack.Push(col);
-            stack.Push(row);
-        }
-
+     
         private void Check(int[][] memo, int col, int row)
         {
             memo[col][row] = VISITED;
         }
 
-        private bool HaveYouSeen(int[][] memo, int col, int row)
+        private bool HaveYouSeen(int[][] seen, int col, int row)
         {
-            return memo[col][row] == NOT_VISITED;
+            return seen[col][row] == VISITED;
         }
 
-        private bool IsLand(int[][] grid, int col, int row)
+        private bool IsThisLand(int[][] grid, int col, int row)
         {
-            return grid[col][row] == LAND;
-        }
-
-        private bool IsIsland(int[][] grid, Stack<int> stack, int col, int row)
-        {
-            return OutOfBound(grid, col, row) && IsLand(grid, col, row);
+            return OutOfBound(grid, col, row) && grid[col][row] == LAND;
         }
 
         private bool OutOfBound(int[][] grid, int col, int row)
