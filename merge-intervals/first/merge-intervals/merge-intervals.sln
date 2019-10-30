@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "merge-intervals", "merge-intervals\merge-intervals.csproj", "{CC1F7E23-07F8-4BED-8D31-70B957E3BD6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "merge-intervals.tests", "merge-intervals.tests\merge-intervals.tests.csproj", "{EB44B4C2-929F-4D24-9C59-4703658DA177}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC1F7E23-07F8-4BED-8D31-70B957E3BD6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1F7E23-07F8-4BED-8D31-70B957E3BD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1F7E23-07F8-4BED-8D31-70B957E3BD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1F7E23-07F8-4BED-8D31-70B957E3BD6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB44B4C2-929F-4D24-9C59-4703658DA177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB44B4C2-929F-4D24-9C59-4703658DA177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB44B4C2-929F-4D24-9C59-4703658DA177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB44B4C2-929F-4D24-9C59-4703658DA177}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E429EDA5-DFAC-4306-BD84-1AF20B6F6D97}
+	EndGlobalSection
+EndGlobal
