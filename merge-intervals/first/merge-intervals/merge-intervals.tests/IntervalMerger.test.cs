@@ -27,8 +27,8 @@ namespace merge_intervals.tests
                 new int[] { 1,2 }
             };
 
-            Assert.AreEqual(1, new IntervalMerger().Merge(input).Length);
-            CollectionAssert.AreEqual(input[0], new IntervalMerger().Merge(input)[0]);
+            int[][] result = new IntervalMerger().Merge(input);
+            CollectAssertAreEqual(input, result);
         }
 
         [TestMethod]
@@ -45,9 +45,7 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
-            Assert.AreEqual(expect.Length, result.Length);
-            for(int i=0; i< input.Length; i++)
-                CollectionAssert.AreEqual(expect[i], result[i]);
+            CollectAssertAreEqual(expect, result);
         }
 
         [TestMethod]
@@ -64,9 +62,7 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
-            Assert.AreEqual(expect.Length, result.Length);
-            for (int i = 0; i < input.Length; i++)
-                CollectionAssert.AreEqual(expect[i], result[i]);
+            CollectAssertAreEqual(expect, result);
         }
 
         [TestMethod]
@@ -85,9 +81,7 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
-            Assert.AreEqual(expect.Length, result.Length);
-            for (int i = 0; i < input.Length; i++)
-                CollectionAssert.AreEqual(expect[i], result[i]);
+            CollectAssertAreEqual(expect, result);
         }
 
         [TestMethod]
@@ -103,8 +97,7 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
-            Assert.AreEqual(expect.Length, result.Length);
-            CollectionAssert.AreEqual(expect[0], result[0]);
+            CollectAssertAreEqual(expect, result);
         }
 
         [TestMethod]
@@ -124,10 +117,8 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
-            Assert.AreEqual(expect.Length, result.Length);
-            CollectionAssert.AreEqual(expect[0], result[0]);
-            CollectionAssert.AreEqual(expect[1], result[1]);
-            CollectionAssert.AreEqual(expect[2], result[2]);
+
+            CollectAssertAreEqual(expect, result);
         }
 
         [TestMethod]
@@ -143,8 +134,14 @@ namespace merge_intervals.tests
             };
 
             int[][] result = new IntervalMerger().Merge(input);
+            CollectAssertAreEqual(expect, result);
+        }
+
+        private void CollectAssertAreEqual(int[][] expect, int[][] result)
+        {
             Assert.AreEqual(expect.Length, result.Length);
-            CollectionAssert.AreEqual(expect[0], result[0]);
+            for (int i = 0; i < expect.Length; i++)
+                CollectionAssert.AreEqual(expect[i], result[i]);
         }
     }
 }

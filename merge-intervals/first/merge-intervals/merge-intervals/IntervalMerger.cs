@@ -17,10 +17,7 @@ namespace merge_intervals
         }
         public int[][] Merge(int[][] input)
         {
-            List<Tuple<int, string>> sortedList = MakeSortedList(input);
-            List<int[]> mergedList = MergeFromList(sortedList);
-
-            return mergedList.ToArray();
+            return MergeFromList(MakeSortedList(input)).ToArray();
         }
 
         private List<int[]> MergeFromList(List<Tuple<int, string>> list)
