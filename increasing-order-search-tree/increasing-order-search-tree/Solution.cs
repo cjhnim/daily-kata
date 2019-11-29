@@ -11,6 +11,11 @@ namespace increasing_order_search_tree
 
         public TreeNode IncreasingBST(TreeNode root)
         {
+            return Method2(root);
+        }
+
+        private TreeNode Method1(TreeNode root)
+        {
             if (root == null)
                 return null;
 
@@ -23,16 +28,43 @@ namespace increasing_order_search_tree
             return list[0];
         }
 
+        TreeNode cur;
+        private TreeNode Method2(TreeNode root)
+        {
+            if (root == null)
+                return null;
+
+            var tmpRoot = new TreeNode(0);
+
+            cur = tmpRoot;
+            inorderArrange(root);
+
+
+            return tmpRoot.right;
+        }
+
+        private void inorderArrange(TreeNode root)
+        {
+            if (root == null)
+                return;
+
+            inorderArrange(root.left);
+
+            root.left = null;
+            cur.right = root;
+            cur = root;
+
+            inorderArrange(root.right);
+        }
+
         private void inorderTraverse(TreeNode root, List<TreeNode> list)
         {
+            if (root == null)
+                return ;
 
-            if (root.left != null)
-                inorderTraverse(root.left, list);
-
+            inorderTraverse(root.left, list);
             list.Add(root);
-
-            if (root.right != null)
-                inorderTraverse(root.right, list);
+            inorderTraverse(root.right, list);
         }
 
         private void rearrange(List<TreeNode> list)
