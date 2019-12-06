@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "increasing-order-search-tree-lecture", "increasing-order-search-tree-lecture\increasing-order-search-tree-lecture.csproj", "{AF52ECAF-EE43-4A7D-9364-0E273D5F8C09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "increasing-order-search-tree-lecture.tests", "increasing-order-search-tree-lecture.tests\increasing-order-search-tree-lecture.tests.csproj", "{1F33EA5D-FBB3-416A-875A-09496F93BEC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF52ECAF-EE43-4A7D-9364-0E273D5F8C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF52ECAF-EE43-4A7D-9364-0E273D5F8C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF52ECAF-EE43-4A7D-9364-0E273D5F8C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF52ECAF-EE43-4A7D-9364-0E273D5F8C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F33EA5D-FBB3-416A-875A-09496F93BEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F33EA5D-FBB3-416A-875A-09496F93BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F33EA5D-FBB3-416A-875A-09496F93BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F33EA5D-FBB3-416A-875A-09496F93BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A5F201B-C90A-4666-AE5E-C766B6C04038}
+	EndGlobalSection
+EndGlobal

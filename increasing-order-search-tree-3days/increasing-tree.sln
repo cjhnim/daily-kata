@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "increasing-tree", "increasing-tree\increasing-tree.csproj", "{1FC3A820-88F8-4C5C-8327-B29F631E30A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "increasing-tree.tests", "increasing-tree.tests\increasing-tree.tests.csproj", "{33763BB4-5787-4C26-856B-BB06C372C8EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FC3A820-88F8-4C5C-8327-B29F631E30A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC3A820-88F8-4C5C-8327-B29F631E30A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC3A820-88F8-4C5C-8327-B29F631E30A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC3A820-88F8-4C5C-8327-B29F631E30A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33763BB4-5787-4C26-856B-BB06C372C8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33763BB4-5787-4C26-856B-BB06C372C8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33763BB4-5787-4C26-856B-BB06C372C8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33763BB4-5787-4C26-856B-BB06C372C8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F857E8B-5834-4CC4-8ED3-0990FF7FE0BD}
+	EndGlobalSection
+EndGlobal
