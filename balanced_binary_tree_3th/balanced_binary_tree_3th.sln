@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced_binary_tree_3th", "balanced_binary_tree_3th\balanced_binary_tree_3th.csproj", "{70D2C3BF-6FB8-4C6F-AA78-3C33BF69A797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced_binary_tree.tests", "balanced_binary_tree.tests\balanced_binary_tree.tests.csproj", "{05655737-5541-4192-8EF0-941D8E4F8124}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70D2C3BF-6FB8-4C6F-AA78-3C33BF69A797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D2C3BF-6FB8-4C6F-AA78-3C33BF69A797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D2C3BF-6FB8-4C6F-AA78-3C33BF69A797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D2C3BF-6FB8-4C6F-AA78-3C33BF69A797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05655737-5541-4192-8EF0-941D8E4F8124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05655737-5541-4192-8EF0-941D8E4F8124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05655737-5541-4192-8EF0-941D8E4F8124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05655737-5541-4192-8EF0-941D8E4F8124}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83D28269-44B5-4C3D-904C-73A1C998FC8C}
+	EndGlobalSection
+EndGlobal

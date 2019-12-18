@@ -4,26 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace balanced_binary_tree_2th
+namespace balanced_binary_tree_3th
 {
-    public class Solution
-    {
-        public bool IsBalanced(TreeNode root)
-        {
-            return root == null || IsBalanced(root.left) && IsBalanced(root.right) && checkBalance(root);
-        }
-
-        private bool checkBalance(TreeNode root)
-        {
-            return Math.Abs(getDepth(root.left) - getDepth(root.right)) <= 1;
-        }
-
-        private int getDepth(TreeNode node)
-        {
-            return node == null ? 0 : 1 + Math.Max(getDepth(node.left), getDepth(node.right));
-        }
-    }
-
     public class TreeNode
     {
         public int val;
@@ -98,6 +80,16 @@ namespace balanced_binary_tree_2th
         private static int leftChild(int index)
         {
             return 2 * index + 1;
+        }
+    }
+    public class Solution
+    {
+        public bool IsBalanced(TreeNode root)
+        {
+            if (null == root)
+                return true;
+
+            return true;
         }
     }
 }
