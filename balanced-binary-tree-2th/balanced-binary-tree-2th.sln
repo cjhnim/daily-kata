@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced-binary-tree-2th", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced-binary-tree.tests", "balanced-binary-tree.tests\balanced-binary-tree.tests.csproj", "{FE3433E5-F132-4919-8C68-4A284509F94A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced-binary-tree-lecture", "balanced-binary-tree-lecture\balanced-binary-tree-lecture.csproj", "{3886E450-AB43-4DCF-89C4-0D43FFDE0CA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "balanced-binary-tree-lecture.tests", "balanced-binary-tree-lecture.tests\balanced-binary-tree-lecture.tests.csproj", "{CB218FBA-E017-46FB-8C3D-862B8E03798F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{FE3433E5-F132-4919-8C68-4A284509F94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE3433E5-F132-4919-8C68-4A284509F94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE3433E5-F132-4919-8C68-4A284509F94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3886E450-AB43-4DCF-89C4-0D43FFDE0CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3886E450-AB43-4DCF-89C4-0D43FFDE0CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3886E450-AB43-4DCF-89C4-0D43FFDE0CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3886E450-AB43-4DCF-89C4-0D43FFDE0CA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB218FBA-E017-46FB-8C3D-862B8E03798F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB218FBA-E017-46FB-8C3D-862B8E03798F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB218FBA-E017-46FB-8C3D-862B8E03798F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB218FBA-E017-46FB-8C3D-862B8E03798F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
