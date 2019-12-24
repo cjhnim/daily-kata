@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.779
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree", "invert-binary-tree\invert-binary-tree.csproj", "{249F1D8C-09CD-476A-B0AD-06DB8AA8F6FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree.tests", "invert-binary-tree.tests\invert-binary-tree.tests.csproj", "{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{249F1D8C-09CD-476A-B0AD-06DB8AA8F6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249F1D8C-09CD-476A-B0AD-06DB8AA8F6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249F1D8C-09CD-476A-B0AD-06DB8AA8F6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249F1D8C-09CD-476A-B0AD-06DB8AA8F6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F651BBD-75D7-44BC-8AEB-AB18A47D0327}
+	EndGlobalSection
+EndGlobal
