@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree", "inver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree.tests", "invert-binary-tree.tests\invert-binary-tree.tests.csproj", "{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree.tests.20191224", "invert-binary-tree.tests.20191224\invert-binary-tree.tests.20191224.csproj", "{B5BB3882-F4E7-4518-9158-73312BBF2403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "invert-binary-tree.tests.20191226", "invert-binary-tree.tests.20191226\invert-binary-tree.tests.20191226.csproj", "{9DB2B09F-3C71-4793-BE34-8C26026A30A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A76D9D17-D4EA-4C02-B26D-FC14E1F60508}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BB3882-F4E7-4518-9158-73312BBF2403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BB3882-F4E7-4518-9158-73312BBF2403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BB3882-F4E7-4518-9158-73312BBF2403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BB3882-F4E7-4518-9158-73312BBF2403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB2B09F-3C71-4793-BE34-8C26026A30A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB2B09F-3C71-4793-BE34-8C26026A30A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB2B09F-3C71-4793-BE34-8C26026A30A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB2B09F-3C71-4793-BE34-8C26026A30A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
