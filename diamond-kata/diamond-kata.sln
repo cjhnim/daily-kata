@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diamond-kata", "diamond-kat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diamond-kata.tests", "diamond-kata.tests\diamond-kata.tests.csproj", "{B2371321-C3BC-4B82-8A17-8FDA7BE8C428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diamond-kata.20200120", "diamond-kata.20200120\diamond-kata.20200120.csproj", "{8F7F8C64-251A-4F4C-B746-6463144B7E12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "diamond-kata.tests.20200120", "diamond-kata.tests.20200120\diamond-kata.tests.20200120.csproj", "{577DC5AA-EECE-4AC6-B43E-ECABAB1DD631}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B2371321-C3BC-4B82-8A17-8FDA7BE8C428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2371321-C3BC-4B82-8A17-8FDA7BE8C428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2371321-C3BC-4B82-8A17-8FDA7BE8C428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7F8C64-251A-4F4C-B746-6463144B7E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7F8C64-251A-4F4C-B746-6463144B7E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7F8C64-251A-4F4C-B746-6463144B7E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7F8C64-251A-4F4C-B746-6463144B7E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577DC5AA-EECE-4AC6-B43E-ECABAB1DD631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577DC5AA-EECE-4AC6-B43E-ECABAB1DD631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577DC5AA-EECE-4AC6-B43E-ECABAB1DD631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577DC5AA-EECE-4AC6-B43E-ECABAB1DD631}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
